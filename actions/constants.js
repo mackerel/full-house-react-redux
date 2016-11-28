@@ -1,0 +1,1 @@
+export const ADD_HOUSEHOLD = 'ADD_HOUSEHOLD'
