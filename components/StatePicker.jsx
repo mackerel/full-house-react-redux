@@ -1,49 +1,10 @@
-import {
-    connect
-} from 'react-redux'
-import React from 'react'
-
-function handleSubmit(e) {
-    let t = e.target
-    console.log("Heard HOUSEHOLD: Address is " + t.address.value);
-    e.preventDefault();
-}
-
-function Household() {
-    return (
-        <form onSubmit={handleSubmit}>
-          <div className="row columns">
-            <h2>
-              Let's describe your humble abode.
-            </h2>
-          </div>
-          <div className="row columns">
-            <label></label>Street Address<input placeholder="123 Main Street" type="text" id="address"/>
-          </div>
-          <div className="row">
-            <div className="medium-6 columns">
-              <label>City<input placeholder="Sacramento" type="text" id="city"/></label>
-            </div>
-            <div className="medium-3 columns">
-              <StatePicker />
-            </div>
-            <div className="medium-3 columns">
-              <label>Zip<input placeholder="95834" type="text" id="zip"/></label>
-            </div>
-          </div>
-          <div className="row columns">
-            <label></label>How Many Bedrooms?<input type="number" value="2" id="number_of_bedrooms"/>
-          </div>
-          <div className="row columns text-center">
-            <button className="button large" type="submit"><i className="fi-arrow-right"></i> Add People</button>
-          </div>
-        </form>
-    )
-}
+import React from 'react';
+import { Control, Form } from 'react-redux-form';
 
 function StatePicker() {
     return (
-        <label>State<select id="us_state">
+    <Control.select model="household.us_state">
+      <option></option>
       <option value="AL">
         Alabama
       </option>
@@ -197,17 +158,7 @@ function StatePicker() {
       <option value="WY">
         Wyoming
       </option>
-      </select>
-    </label>
+    </Control.select>
     )
 }
-
-// Called each time the state updates. The result of this will be merged
-// into the component's props
-function mapStateToProps(state) {
-    return {
-        state
-    }
-}
-
-export default connect(mapStateToProps)(Household)
+export default StatePicker;

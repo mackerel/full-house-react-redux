@@ -12,11 +12,13 @@
   "dependencies": {
     "foundation-sites": "^6.2.4",
     "immutable": "^3.8.1",
-    "jquery": "^3.1.1",
-    "react": "^0.14.8",
-    "react-dom": "^0.14.2",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
+    "react-redux-form": "^1.2.4",
     "redux": "^3.6.0",
+    "redux-form": "^6.2.0",
+    "redux-thunk": "^2.1.0",
     "webpack": "^1.12.6",
     "webpack-dev-server": "^1.16.2"
   },
