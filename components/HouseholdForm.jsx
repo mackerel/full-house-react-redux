@@ -1,18 +1,30 @@
 import { Control, Form } from 'react-redux-form';
+import { connect } from 'react-redux';
 import React from 'react';
 import StatePicker from './StatePicker'
+import * as actions from '../actions'
+
+let createHandlers = function(dispatch) {
+  let onSubmit = function(data) {
+    dispatch(actions.addHousehold(data))
+  };
+
+  return {
+    onSubmit,
+    // other handlers
+  };
+}
+
 
 class HouseholdForm extends React.Component {
-    
-     handleSubmit(household) {
-        //TODO: Let's move to the next area. ...react-router?
-        
-        //FIRST...send this to the API.
-     }
-
+    constructor(props) {
+        super(props);
+        this.handlers = createHandlers(this.props.dispatch);
+    }
+  
     render() {
         return (
-            <Form model="household" onSubmit={(household) => this.handleSubmit(household)}>
+            <Form model="household" onSubmit={(household) => this.handlers.onSubmit(household)}>
                 <label>Street Address</label>
                 <Control.text model="household.address" />
 
@@ -29,4 +41,4 @@ class HouseholdForm extends React.Component {
         );
     }
 }
-export default HouseholdForm;
+export default connect()(HouseholdForm);
