@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
+import React from 'react'
 
-let handleSubmit = (e) => {
+function handleSubmit(e) {
     let t = e.target
     console.log("Heard HOUSEHOLD: Address is " + t.address.value);
     e.preventDefault();
 }
 
-let Household = () => {
+function Household() {
     return (
         <form onSubmit={this.handleSubmit}>
       <div class="row columns">
@@ -199,9 +200,11 @@ function StatePicker() {
     )
 }
 
-function mapStateToProps(household) {
+// Called each time the state updates. The result of this will be merged
+// into the component's props
+function mapStateToProps(state) {
     return {
-        household
+        state
     }
 }
 

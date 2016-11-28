@@ -1,10 +1,10 @@
 import Immutable from 'immutable'
-import * as constants from './constants'
+import * as constants from '../actions/constants'
 
-export default (state = Immutable.Object({}), action) => {
+export default (state = Immutable.Map({}), action) => {
     switch (action.type) {
         case constants.ADD_HOUSEHOLD:
-            return new Immutable.Object(action.household)
+            return Immutable.Map(action.household)
         default:
             return state
     }
