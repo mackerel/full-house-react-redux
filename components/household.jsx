@@ -1,4 +1,6 @@
-import { connect } from 'react-redux'
+import {
+    connect
+} from 'react-redux'
 import React from 'react'
 
 function handleSubmit(e) {
@@ -9,33 +11,33 @@ function handleSubmit(e) {
 
 function Household() {
     return (
-        <form onSubmit={this.handleSubmit}>
-      <div class="row columns">
-        <h2>
-          Let's describe your humble abode.
-        </h2>
-      </div>
-      <div class="row columns">
-        <label></label>Street Address<input placeholder="123 Main Street" type="text" id="address"/>
-      </div>
-      <div class="row">
-        <div class="medium-6 columns">
-          <label>City<input placeholder="Sacramento" type="text" id="city"/></label>
-        </div>
-        <div class="medium-3 columns">
-          <StatePicker />
-        </div>
-        <div class="medium-3 columns">
-          <label>Zip<input placeholder="95834" type="text" id="zip"/></label>
-        </div>
-      </div>
-      <div class="row columns">
-        <label></label>How Many Bedrooms?<input type="number" value="2" id="number_of_bedrooms"/>
-      </div>
-      <div class="row columns text-center">
-        <button class="button large" type="submit"><i class="fi-arrow-right"></i> Add People</button>
-      </div>
-    </form>
+        <form onSubmit={handleSubmit}>
+          <div class="row columns">
+            <h2>
+              Let's describe your humble abode.
+            </h2>
+          </div>
+          <div class="row columns">
+            <label></label>Street Address<input placeholder="123 Main Street" type="text" id="address"/>
+          </div>
+          <div class="row">
+            <div class="medium-6 columns">
+              <label>City<input placeholder="Sacramento" type="text" id="city"/></label>
+            </div>
+            <div class="medium-3 columns">
+              <StatePicker />
+            </div>
+            <div class="medium-3 columns">
+              <label>Zip<input placeholder="95834" type="text" id="zip"/></label>
+            </div>
+          </div>
+          <div class="row columns">
+            <label></label>How Many Bedrooms?<input type="number" value="2" id="number_of_bedrooms"/>
+          </div>
+          <div class="row columns text-center">
+            <button class="button large" type="submit"><i class="fi-arrow-right"></i> Add People</button>
+          </div>
+        </form>
     )
 }
 
@@ -209,29 +211,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Household)
-
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       household: {},
-//       residents: [],
-//       vehicles: []
-//     };
-//   }
-//   handleHouseholdSubmit(e) {
-//     let t = e.target
-//     console.log("Heard HOUSEHOLD: Address is " + t.address.value);
-//     // this.setState({household:{address:t.address.value}}
-//     e.preventDefault();
-//   }
-//   render() {
-//     return (
-//       <div class="row columns">
-//       <HeaderImg source='https://s3-us-west-2.amazonaws.com/s.cdpn.io/937012/full-house-logo.png'/>
-//       <Household onSubmit={this.handleHouseholdSubmit}/>
-//     </div>
-//     )
-//   }
-// }
