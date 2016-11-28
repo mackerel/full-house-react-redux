@@ -12,30 +12,30 @@ function handleSubmit(e) {
 function Household() {
     return (
         <form onSubmit={handleSubmit}>
-          <div class="row columns">
+          <div className="row columns">
             <h2>
               Let's describe your humble abode.
             </h2>
           </div>
-          <div class="row columns">
+          <div className="row columns">
             <label></label>Street Address<input placeholder="123 Main Street" type="text" id="address"/>
           </div>
-          <div class="row">
-            <div class="medium-6 columns">
+          <div className="row">
+            <div className="medium-6 columns">
               <label>City<input placeholder="Sacramento" type="text" id="city"/></label>
             </div>
-            <div class="medium-3 columns">
+            <div className="medium-3 columns">
               <StatePicker />
             </div>
-            <div class="medium-3 columns">
+            <div className="medium-3 columns">
               <label>Zip<input placeholder="95834" type="text" id="zip"/></label>
             </div>
           </div>
-          <div class="row columns">
+          <div className="row columns">
             <label></label>How Many Bedrooms?<input type="number" value="2" id="number_of_bedrooms"/>
           </div>
-          <div class="row columns text-center">
-            <button class="button large" type="submit"><i class="fi-arrow-right"></i> Add People</button>
+          <div className="row columns text-center">
+            <button className="button large" type="submit"><i className="fi-arrow-right"></i> Add People</button>
           </div>
         </form>
     )
