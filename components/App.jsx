@@ -5,11 +5,15 @@ import store from '../store'
 
 import HouseholdForm from './HouseholdForm' //component
 
-let reactElement = document.getElementById('react')
+class App extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <HouseholdForm />
+            </Provider>
+        )
+    }
+}
 
-render(
-    <Provider store={store}>
-        <HouseholdForm />
-    </Provider>,
-    reactElement
-)
+export default App;
+
