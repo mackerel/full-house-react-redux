@@ -5,3 +5,10 @@ export function addHousehold(household) {
         household
     }
 }
+
+export function addResident(resident) {
+    return {
+        type: constants.ADD_RESIDENT,
+        resident
+    }
+}

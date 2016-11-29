@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import React from 'react';
 import StatePicker from './StatePicker'
 import * as actions from '../actions'
+import { browserHistory } from 'react-router'
 
 let createHandlers = function(dispatch) {
   let onSubmit = function(data) {
+    //Move to the next section
+    //TODO: Make this happen after we get a result back from API.
+    browserHistory.push('/resident')
+    
     dispatch(actions.addHousehold(data))
   };
 
