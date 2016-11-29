@@ -1,9 +1,9 @@
 import React from 'react';
-import { Control, Form } from 'react-redux-form';
+import { Field } from 'redux-form';
 
 function StatePicker() {
     return (
-    <Control.select model="household.us_state">
+    <Field name="us_state" component="select">
       <option></option>
       <option value="AL">
         Alabama
@@ -158,7 +158,7 @@ function StatePicker() {
       <option value="WY">
         Wyoming
       </option>
-    </Control.select>
+    </Field>
     )
 }
 export default StatePicker;

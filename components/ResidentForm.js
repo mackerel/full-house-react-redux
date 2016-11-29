@@ -1,69 +1,85 @@
-import { Control, Form } from 'react-redux-form';
-import { connect } from 'react-redux';
-import React from 'react';
+import React, { Component } from 'react';
 import * as actions from '../actions'
-
-let createHandlers = function(dispatch) {
-  let onSubmit = function(data) {
-    dispatch(actions.addResident(data))
-  };
-
-  return {
-    onSubmit,
-    // other handlers
-  };
-}
-
+import {Field,reduxForm} from 'redux-form';
+import { browserHistory } from 'react-router'
+import Residents from './Residents'
 
 class ResidentForm extends React.Component {
     constructor(props) {
         super(props);
-        this.handlers = createHandlers(this.props.dispatch);
+        this.onSubmit = this.onSubmit.bind(this);
     }
-  
+
+    onSubmit(data) {
+        this.props.dispatch(actions.addResident(data));
+        
+        //Clear form, do another.
+        browserHistory.push("/resident");
+    }
+
     render() {
+
+        const {handleSubmit} = this.props;
         return (
             <div className="row columns">
                 <h2>Who lives here?</h2>
                 
-                <Form model="resident" onSubmit={(resident) => this.handlers.onSubmit(resident)}>
-                    
-                    <div className="row">
-                        <div className="medium-6 columns">
-                            <label>First Name</label>
-                            <Control.text type="text" model="resident.first_name" />
-                        </div>
-                        <div className="medium-6 columns">
-                            <label>Last Name</label>
-                            <Control.text type="text" model="resident.last_name" />
-                        </div>
+                <div className="row">
+                    <div className="medium-9 columns">
+                        <form onSubmit={handleSubmit(this.onSubmit)}>
+                            <div className="row">
+                                <div className="medium-6 columns">
+                                    <label>First Name</label>
+                                    <Field name="first_name" component="input" type="text"/>
+                                </div>
+                                <div className="medium-6 columns">
+                                    <label>Last Name</label>
+                                    <Field name="last_name" component="input" type="text"/>
+                                </div>
+                            </div>
+                            
+                            <div className="row">
+                                <div className="medium-7 columns">
+                                    <label>Email</label>
+                                    <Field name="email" component="input" type="text"/>
+                                </div>
+                                
+                                <div className="medium-2 columns">
+                                    <label>Age</label>
+                                    <Field name="age" component="input" type="number"/>
+                                </div>
+                                
+                                <div className="medium-3 columns">
+                                    <label>Gender</label>
+                                    <Field name="gender" component="select">
+                                        <option></option>
+                                        <option value="m">Male</option>
+                                        <option value="f">Female</option>
+                                    </Field>
+                                </div>
+                            </div>
+                            <div className="row columns text-center">
+                                <button type="submit" className="button secondary">
+                                    <i className="fi-plus"></i> Save & Add Another Resident
+                                </button>
+                            </div>
+                        </form>
                     </div>
+                    <div className="medium-3 columns">
+                        <Residents />
                     
-                    <div className="row">
-                        <div className="medium-6 columns">
-                            <label>Age</label>
-                            <Control.text type="number" model="resident.age" />
-                        </div>
-                        
-                        <div className="medium-3 columns">
-                            <label>Email</label>
-                            <Control.text type="text" model="resident.email" />
-                        </div>
-                        
-                        <div className="medium-3 columns">
-                            <label>Gender</label>
-                            <Control.radio type="radio" model="resident.gender" />  
-                        </div>
-                    </div>
-                    
-                    <div className="row columns text-center">
                         <button className="button large">
-                            <i className="fi-arrow-right"></i> Add Vehicles
+                            <i className="fi-right-arrow"></i> Save & Add Vehicles
                         </button>
                     </div>
-                </Form>
+                
+                </div>
             </div>
         );
     }
 }
-export default connect()(ResidentForm);
+// Decorate the form component
+// Decorate the form component
+export default reduxForm({
+    form: 'add-resident' // a unique name for this form
+})(ResidentForm);

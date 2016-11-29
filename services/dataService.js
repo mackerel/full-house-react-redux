@@ -1,5 +1,4 @@
 import request from 'superagent';
-import * as actions from '../actions'
 import * as constants from '../actions/constants'
 
 const dataService = store => next => action => { 
