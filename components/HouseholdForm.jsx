@@ -24,20 +24,45 @@ class HouseholdForm extends React.Component {
   
     render() {
         return (
-            <Form model="household" onSubmit={(household) => this.handlers.onSubmit(household)}>
-                <label>Street Address</label>
-                <Control.text model="household.address" />
-
-                <label>Zip</label>
-                <Control.text model="household.zip" />
+            <div className="row columns">
+                <h2>Let's describe your humble abode.</h2>
                 
-                <label>State</label>
-                <StatePicker />
-    
-                <button className="button large">
-                    Save and Add People
-                </button>
-            </Form>
+                <Form model="household" onSubmit={(household) => this.handlers.onSubmit(household)}>
+                    
+                    <div className="row columns">
+                        <label>Street Address</label>
+                        <Control.text type="text" model="household.address" />
+                    </div>
+                    
+                    <div className="row">
+                        <div className="medium-6 columns">
+                            <label>City</label>
+                            <Control.text type="text" model="household.city" />
+                        </div>
+                        
+                        <div className="medium-3 columns">
+                            <label>State</label>
+                            <StatePicker />
+                        </div>
+                        
+                        <div className="medium-3 columns">
+                            <label>Zip</label>
+                            <Control.text type="text" model="household.zip" />  
+                        </div>
+                    </div>
+                    
+                    <div className="row columns">
+                        <label>How Many Bedrooms?</label>
+                        <Control.text type="number" model="household.number_of_bedrooms" />
+                    </div>
+                    
+                    <div className="row columns text-center">
+                        <button className="button large">
+                            <i className="fi-arrow-right"></i> Add People
+                        </button>
+                    </div>
+                </Form>
+            </div>
         );
     }
 }
