@@ -9,19 +9,20 @@ const dataService = store => next => action => {
   next(action)
   
   switch (action.type) {
-  case 'GET_TODO_DATA':
-    /*
-    In case we receive an action to send an API request, send the appropriate request
-    */
+  case constants.ADD_HOUSEHOLD:
+    console.log("dataService: Making POST request to add Household...");
     request
-      .get('/data/todo-data.json')
+      .post('https://full-house-server-mackerel.c9users.io/households')
+      .send(action.household)
+      .set('Authorization', 'Basic bWlrZUBmdWxsc3RhY2tsYWJzLmNvOmZ1bGxzdGFjaw==')
+      .set('Accept', 'application/json')  
       .end((err, res) => {
         if (err) {
           /*
           in case there is any error, dispatch an action containing the error
           */
           return next({
-            type: 'GET_TODO_DATA_ERROR',
+            type: 'POST_HOUSEHOLD_ERROR',
             err
           })
         }
@@ -31,7 +32,7 @@ const dataService = store => next => action => {
         that data was received successfully, along with the parsed data
         */
         next({
-          type: 'GET_TODO_DATA_RECEIVED',
+          type: 'POST_HOUSEHOLD_RECEIVED',
           data
         })
       })
