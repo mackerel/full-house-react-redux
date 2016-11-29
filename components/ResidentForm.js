@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as actions from '../actions'
-import {Field,reduxForm} from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { browserHistory } from 'react-router'
 import Residents from './Residents'
 
@@ -12,9 +12,12 @@ class ResidentForm extends React.Component {
 
     onSubmit(data) {
         this.props.dispatch(actions.addResident(data));
-        
+        this.props.dispatch(reset('add-resident'));
+
+
         //Clear form, do another.
-        browserHistory.push("/resident");
+        // browserHistory.push("/resident");
+        
     }
 
     render() {
