@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as actions from '../actions'
 import { Field, reduxForm, reset } from 'redux-form';
 import { browserHistory } from 'react-router'
-import Residents from './Residents'
+import ResidentListContainer from './ResidentListContainer'
 
 class ResidentForm extends React.Component {
     constructor(props) {
@@ -12,12 +12,7 @@ class ResidentForm extends React.Component {
 
     onSubmit(data) {
         this.props.dispatch(actions.addResident(data));
-        this.props.dispatch(reset('add-resident'));
-
-
-        //Clear form, do another.
-        // browserHistory.push("/resident");
-        
+        this.props.dispatch(reset('add-resident')); //clears form
     }
 
     render() {
@@ -69,7 +64,7 @@ class ResidentForm extends React.Component {
                         </form>
                     </div>
                     <div className="medium-3 columns">
-                        <Residents />
+                        <ResidentListContainer />
                     
                         <button className="button large">
                             <i className="fi-right-arrow"></i> Save & Add Vehicles

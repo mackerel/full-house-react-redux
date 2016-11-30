@@ -1,19 +1,36 @@
 import * as constants from '../actions/constants'
+import { routerReducer } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
+import { combineReducers } from 'redux'
 
 const initialState = {household:{}, residents:[], vehicles:[]}
 
-const fullHouseApp = (state = initialState, action) => {
-    switch (action.type) {
-        case constants.ADD_RESIDENT:
-            //Add a resident to the residents array
-            return Object.assign({}, state, {
-                residents: [...state.residents, action.resident]
-            })
+function household(state=initialState, action) {
+    switch ( action.type ) {
         case constants.ADD_HOUSEHOLD:
             return Object.assign({}, state, {household:action.household});
+        default:
+            return state;      
+    }
+}
+
+function residents(state = [], action) {
+    switch (action.type) {
+        case constants.ADD_RESIDENT:
+            return [...state, action.resident]
         default:
             return state
     }
 }
 
-export default fullHouseApp;
+function vehicles(state=[], action) {
+    return state;
+}
+
+export const reducers = combineReducers( {
+    household,
+    residents,
+    vehicles,
+    form: formReducer,
+    routing:routerReducer
+})
