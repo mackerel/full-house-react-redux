@@ -12,7 +12,7 @@ const dataService = store => next => action => {
       console.log("dataService: Making POST request to add Household...");
       request
         .post('https://full-house-server-mackerel.c9users.io/households')
-        .send({household:action.household, vehicles:action.vehicles, residents:action.residents})
+        .send({household:action.household})
         .set('Authorization', 'Basic bWlrZUBmdWxsc3RhY2tsYWJzLmNvOmZ1bGxzdGFjaw==')
         .set('Accept', 'application/json')  
         .end((err, res) => {
@@ -23,13 +23,31 @@ const dataService = store => next => action => {
             return next({
               type: constants.POST_HOUSEHOLD_ERROR,
               err
-            })
+            });
           }
-          const data = JSON.parse(res.text)
+          const data = JSON.parse(res.text);
           /*
           Once data is received, dispatch an action telling the application
           that data was received successfully, along with the parsed data
           */
+          console.log("dataService: Heard back from Household. Adding Residents");
+          let household = JSON.parse(data.record);
+          action.residents.map(res => {
+            res.household_id = household.id;
+            let req = generateReq("residents", res);
+            console.log("Trying to send Resident to API. Req = "+req);
+            req.end((err, res) => {
+              if ( err ) {
+                console.log("ERR! A resident barfed.");
+              }
+              const response = JSON.parse(res.text);
+              const new_resident = JSON.parse(response.record);
+              
+              console.log("Got Reponse about Resident "+new_resident.id);
+            });
+          });
+          
+          
           next({
             type: constants.POST_HOUSEHOLD_RECEIVED,
             data
@@ -42,7 +60,14 @@ const dataService = store => next => action => {
     default:
       break
   }
-
 };
+
+const generateReq = (endpointName, jsonObj) => {
+  return request
+        .post('https://full-house-server-mackerel.c9users.io/'+endpointName)
+        .send(jsonObj)
+        .set('Authorization', 'Basic bWlrZUBmdWxsc3RhY2tsYWJzLmNvOmZ1bGxzdGFjaw==')
+        .set('Accept', 'application/json')
+}
 
 export default dataService
