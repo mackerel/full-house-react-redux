@@ -67,7 +67,7 @@ class ResidentForm extends React.Component {
                         <ResidentListContainer />
                     
                         <button className="button large">
-                            <i className="fi-right-arrow"></i> Save & Add Vehicles
+                            <i className="fi-right-arrow"></i> Go to Vehicles
                         </button>
                     </div>
                 
