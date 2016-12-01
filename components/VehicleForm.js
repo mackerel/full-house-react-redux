@@ -1,6 +1,7 @@
 import React from 'react';
 import * as actions from '../actions'
 import { Field, reduxForm, reset } from 'redux-form';
+import { browserHistory } from 'react-router';
 import VehicleListContainer from './VehicleListContainer'
 import ResidentVehiclePicker from './ResidentVehiclePicker'
 
@@ -59,7 +60,7 @@ class VehicleForm extends React.Component {
                     <div className="medium-3 columns">
                         <VehicleListContainer />
                     
-                        <button className="button large">
+                        <button className="button large" onClick={()=>{ browserHistory.push("/summary");}}>
                             <i className="fi-right-arrow"></i> Go to Summary
                         </button>
                     </div>
