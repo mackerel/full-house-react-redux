@@ -2,6 +2,7 @@ import React from 'react';
 import * as actions from '../actions'
 import { Field, reduxForm, reset } from 'redux-form';
 import VehicleListContainer from './VehicleListContainer'
+import ResidentVehiclePicker from './ResidentVehiclePicker'
 
 class VehicleForm extends React.Component {
     constructor(props) {
@@ -43,6 +44,11 @@ class VehicleForm extends React.Component {
                                 </div>
                             </div>
                             
+                            <div className="row columns">
+                                Who drives this vehicle?
+                                <ResidentVehiclePicker />
+                            </div>
+                            
                             <div className="row columns text-center">
                                 <button type="submit" className="button secondary">
                                     <i className="fi-plus"></i> Save & Add Another Vehicle
@@ -63,7 +69,7 @@ class VehicleForm extends React.Component {
         );
     }
 }
-// Decorate the form component
+
 // Decorate the form component
 export default reduxForm({
     form: 'add-vehicle' // a unique name for this form
