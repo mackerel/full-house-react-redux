@@ -51,7 +51,7 @@ class VehicleForm extends React.Component {
                             </div>
                             
                             <div className="row columns text-center">
-                                <button type="submit" className="button secondary">
+                                <button type="submit" className="button secondary large">
                                     <i className="fi-plus"></i> Save & Add Another Vehicle
                                 </button>
                             </div>
@@ -61,7 +61,7 @@ class VehicleForm extends React.Component {
                         <VehicleListContainer />
                     
                         <button className="button large" onClick={()=>{ browserHistory.push("/summary");}}>
-                            <i className="fi-home"></i> Save & Go To Summary
+                            <i className="fi-home"></i> Go To Summary
                         </button>
                     </div>
                 

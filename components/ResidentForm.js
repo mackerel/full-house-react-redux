@@ -14,7 +14,7 @@ class ResidentForm extends React.Component {
         this.props.dispatch(actions.addResident(data));
         this.props.dispatch(reset('add-resident')); //clears form
     }
-
+    
     render() {
 
         const {handleSubmit} = this.props;
@@ -57,7 +57,7 @@ class ResidentForm extends React.Component {
                                 </div>
                             </div>
                             <div className="row columns text-center">
-                                <button type="submit" className="button secondary">
+                                <button type="submit" className="button secondary large">
                                     <i className="fi-plus"></i> Save & Add Another Resident
                                 </button>
                             </div>
@@ -67,7 +67,7 @@ class ResidentForm extends React.Component {
                         <ResidentListContainer />
                     
                         <button className="button large" onClick={()=>{ browserHistory.push("/vehicle");}}>
-                            <i className="fi-wheelchair"></i> Save & Go to Vehicles
+                            <i className="fi-wheelchair"></i> Go to Vehicles
                         </button>
                     </div>
                 
