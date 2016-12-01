@@ -61,7 +61,7 @@ class VehicleForm extends React.Component {
                         <VehicleListContainer />
                     
                         <button className="button large" onClick={()=>{ browserHistory.push("/summary");}}>
-                            <i className="fi-right-arrow"></i> Go to Summary
+                            <i className="fi-home"></i> Save & Go To Summary
                         </button>
                     </div>
                 
