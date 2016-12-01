@@ -2,7 +2,7 @@
 const capitalize = str => { return str.charAt(0).toUpperCase() + str.slice(1); }
 
 export function titleize(baseStr) {
-    var string_array = baseStr.split(' ');
+    var string_array = baseStr.split("_");
     string_array = string_array.map(function(str) {
       return capitalize(str);
     });

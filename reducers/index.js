@@ -6,7 +6,7 @@ import { combineReducers } from 'redux'
 function household(state={}, action) {
     switch ( action.type ) {
         case constants.ADD_HOUSEHOLD:
-            return action.household
+            return action.household.address ? action.household : state;
         default:
             return state;      
     }
