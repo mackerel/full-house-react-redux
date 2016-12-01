@@ -67,7 +67,7 @@ class ResidentForm extends React.Component {
                         <ResidentListContainer />
                     
                         <button className="button large" onClick={()=>{ browserHistory.push("/vehicle");}}>
-                            <i className="fi-home"></i> Go to Vehicles
+                            <i className="fi-wheelchair"></i> Save & Go to Vehicles
                         </button>
                     </div>
                 

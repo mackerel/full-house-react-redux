@@ -56,7 +56,7 @@ class HouseholdForm extends React.Component {
                 
                 <div className="row columns text-center">
                     <button type="submit" className="button large">
-                        <i className="fi-arrow-right"></i> Save & Add People
+                        <i className="fi-torsos"></i> Save & Go To Residents
                     </button>
                 </div>
             </form>
