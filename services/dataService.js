@@ -8,11 +8,11 @@ const dataService = store => next => action => {
   next(action)
   
   switch (action.type) {
-    case constants.ADD_HOUSEHOLD:
+    case constants.SUBMIT_DATA:
       console.log("dataService: Making POST request to add Household...");
       request
         .post('https://full-house-server-mackerel.c9users.io/households')
-        .send(action.household)
+        .send({household:action.household, vehicles:action.vehicles, residents:action.residents})
         .set('Authorization', 'Basic bWlrZUBmdWxsc3RhY2tsYWJzLmNvOmZ1bGxzdGFjaw==')
         .set('Accept', 'application/json')  
         .end((err, res) => {

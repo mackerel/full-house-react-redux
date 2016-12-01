@@ -3,8 +3,6 @@ import { routerReducer } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
 import { combineReducers } from 'redux'
 
-const initialState = {household:{}, residents:[], vehicles:[]}
-
 function household(state={}, action) {
     switch ( action.type ) {
         case constants.ADD_HOUSEHOLD:

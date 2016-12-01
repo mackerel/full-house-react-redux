@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import RecordFields from './RecordFields'
+import * as actions from '../actions'
 
 const mapStateToProps = (state) => state
 
 class Summary extends React.Component {
   render() {
-    const { household } = this.props
-    let rows = [];
+    const { household, residents, vehicles, dispatch } = this.props;
+    const onClick = (e) => {
+      dispatch(actions.submitData(household, residents, vehicles));
+    };
+    
     return (
-      <div>
+      <div className="row columns">
         <h1>Your Humble Abode:</h1>
         
         <h3>A Solid Foundation</h3>
@@ -29,9 +33,17 @@ class Summary extends React.Component {
         }
         
         <h3>Cold Steel</h3>
-        { this.props.vehicles.map((vehicle) => {
+        {
+          this.props.vehicles.map((vehicle) => {
             return <RecordFields key={vehicle.id} {...vehicle} />;
-        })}
+          })
+        }
+        
+        <div className="row columns text-center">
+          <button className="button large info" onClick={onClick}>
+            Send It!
+          </button>
+        </div>
         
       </div>
     );

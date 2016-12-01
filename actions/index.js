@@ -9,6 +9,15 @@ export function addHousehold(household) {
     }
 }
 
+export function submitData(household, residents, vehicles) {
+    return {
+        type: constants.SUBMIT_DATA,
+        household,
+        residents,
+        vehicles
+    }
+}
+
 export function addResident(resident) {
     resident.id = nextResidentID++;
     return {
