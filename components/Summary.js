@@ -16,7 +16,7 @@ class Summary extends React.Component {
     
     return (
       <div className="row columns">
-        <h1>Your Humble Abode:</h1>
+        <h1>Home Sweet Home :</h1>
         
         <div className="callout success">
           <h3>A Solid Foundation</h3>
