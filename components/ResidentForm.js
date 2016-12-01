@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import * as actions from '../actions'
+import React from 'react';
+import * as actions from '../actions';
 import { Field, reduxForm, reset } from 'redux-form';
-import { browserHistory } from 'react-router'
-import ResidentListContainer from './ResidentListContainer'
+import { browserHistory } from 'react-router';
+import ResidentListContainer from './ResidentListContainer';
 
 class ResidentForm extends React.Component {
     constructor(props) {
@@ -66,7 +66,7 @@ class ResidentForm extends React.Component {
                     <div className="medium-3 columns">
                         <ResidentListContainer />
                     
-                        <button className="button large">
+                        <button className="button large" onClick={()=>{ browserHistory.push("/vehicle");}}>
                             <i className="fi-right-arrow"></i> Go to Vehicles
                         </button>
                     </div>

@@ -10,7 +10,7 @@ class VehicleForm extends React.Component {
     }
 
     onSubmit(data) {
-        this.props.dispatch(actions.addResident(data));
+        this.props.dispatch(actions.addVehicle(data));
         this.props.dispatch(reset('add-vehicle')); //clears form
     }
 

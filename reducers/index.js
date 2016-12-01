@@ -24,7 +24,12 @@ function residents(state = [], action) {
 }
 
 function vehicles(state=[], action) {
-    return state;
+    switch (action.type) {
+        case constants.ADD_VEHICLE:
+            return [...state, action.vehicle]
+        default:
+            return state
+    }
 }
 
 export const reducers = combineReducers( {

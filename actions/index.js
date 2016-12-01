@@ -12,3 +12,10 @@ export function addResident(resident) {
         resident
     }
 }
+
+export function addVehicle(vehicle) {
+    return {
+        type: constants.ADD_VEHICLE,
+        vehicle
+    }
+}
