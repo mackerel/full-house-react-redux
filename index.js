@@ -6,6 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import App from './components/App'
 import HouseholdForm from './components/HouseholdForm'
 import ResidentForm from './components/ResidentForm'
+import VehicleForm from './components/VehicleForm'
 import store from './store'
 
 const history = syncHistoryWithStore(browserHistory, store)
@@ -18,6 +19,7 @@ render((
         <IndexRoute component={HouseholdForm}/>
         <Route path="/household" component={HouseholdForm}/>
         <Route path="/resident" component={ResidentForm}/>
+        <Route path="/vehicle" component={VehicleForm}/>
       </Route>
     </Router>
   </Provider>
